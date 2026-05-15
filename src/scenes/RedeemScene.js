@@ -28,6 +28,14 @@ const CODES = {
       resetForMap(registry);
       return { message: '✓ Code redeemed — welcome to The Hive', restart: true };
     }
+  },
+  '1234': {
+    label: 'Jump to The Forest with every bee unlocked',
+    apply(registry) {
+      setCurrentMap(registry, 'forest');
+      resetForMap(registry);
+      return { message: '✓ Code redeemed — welcome to The Forest', restart: true };
+    }
   }
 };
 
