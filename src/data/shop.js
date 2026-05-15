@@ -3,7 +3,7 @@
 
 export const SHOP_ITEMS = {
   wipe: {
-    id: 'wipe', name: 'Wipe', cost: 10,
+    id: 'wipe', name: 'Wipe', cost: 100,
     kind: 'consumable',
     icon: '💨', tint: 0xa8d8ff,
     desc: 'Clears every non-boss enemy. Press W in-game.'

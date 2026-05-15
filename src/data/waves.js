@@ -44,7 +44,11 @@ const GARDEN = [
     { at:  3500, type: 'brown' }, { at: 3500, type: 'brown' },
     { at:  7500, type: 'honeybadger' }, { at: 8000, type: 'honeybadger' },
     { at: 11500, type: 'cub' }, { at: 11700, type: 'cub' }, { at: 11900, type: 'cub' },
-    { at: 14500, type: 'brown' }
+    { at: 14500, type: 'brown' },
+    { at: 17500, type: 'grizzly' },
+    { at: 20500, type: 'honeybadger' }, { at: 20700, type: 'honeybadger' },
+    { at: 23500, type: 'cub' }, { at: 23700, type: 'cub' }, { at: 23900, type: 'cub' },
+    { at: 26500, type: 'brown' }, { at: 26700, type: 'brown' }
   ]}
 ];
 
@@ -93,7 +97,10 @@ const PLAYGROUND = [
     { at:  2500, type: 'grizzly' },
     { at:  5500, type: 'honeybadger' }, { at: 5700, type: 'honeybadger' }, { at: 5900, type: 'honeybadger' },
     { at:  9500, type: 'brown' }, { at: 9500, type: 'brown' }, { at: 9500, type: 'brown' },
-    { at: 13500, type: 'grizzly' }
+    { at: 13500, type: 'grizzly' },
+    { at: 17500, type: 'grizzly' }, { at: 17700, type: 'grizzly' },
+    { at: 21500, type: 'honeybadger' }, { at: 21700, type: 'honeybadger' }, { at: 21900, type: 'honeybadger' },
+    { at: 25500, type: 'brown' }, { at: 25700, type: 'brown' }, { at: 25900, type: 'brown' }, { at: 26100, type: 'brown' }
   ]}
 ];
 
@@ -143,7 +150,10 @@ const SANDPIT = [
     { at:  4000, type: 'honeybadger' }, { at: 4200, type: 'honeybadger' }, { at: 4400, type: 'honeybadger' },
     { at:  7500, type: 'brown' }, { at: 7500, type: 'brown' }, { at: 7500, type: 'brown' },
     { at: 11500, type: 'grizzly' },
-    { at: 15500, type: 'boss' }
+    { at: 15500, type: 'boss' },
+    { at: 20500, type: 'grizzly' }, { at: 20700, type: 'grizzly' },
+    { at: 24500, type: 'honeybadger' }, { at: 24700, type: 'honeybadger' }, { at: 24900, type: 'honeybadger' },
+    { at: 28500, type: 'brown' }, { at: 28700, type: 'brown' }, { at: 28900, type: 'brown' }
   ]}
 ];
 
@@ -200,7 +210,10 @@ const CAVE = [
     { at: 13500, type: 'brown' }, { at: 13700, type: 'brown' },
     { at: 13900, type: 'brown' }, { at: 14100, type: 'brown' },
     { at: 17500, type: 'grizzly' }, { at: 17700, type: 'grizzly' },
-    { at: 21500, type: 'boss' }
+    { at: 21500, type: 'boss' },
+    { at: 26500, type: 'grizzly' }, { at: 26700, type: 'grizzly' }, { at: 26900, type: 'grizzly' },
+    { at: 30500, type: 'honeybadger' }, { at: 30700, type: 'honeybadger' }, { at: 30900, type: 'honeybadger' },
+    { at: 34500, type: 'brown' }, { at: 34700, type: 'brown' }, { at: 34900, type: 'brown' }, { at: 35100, type: 'brown' }
   ]}
 ];
 
@@ -245,7 +258,9 @@ const ICE = [
     { at:  5500, type: 'panda' }, { at: 5700, type: 'panda' }, { at: 5900, type: 'panda' },
     { at:  6100, type: 'panda' }, { at: 6300, type: 'panda' },
     { at: 11500, type: 'panda' }, { at: 11700, type: 'panda' },
-    { at: 11900, type: 'panda' }, { at: 12100, type: 'panda' }, { at: 12300, type: 'panda' }
+    { at: 11900, type: 'panda' }, { at: 12100, type: 'panda' }, { at: 12300, type: 'panda' },
+    { at: 16500, type: 'panda' }, { at: 16700, type: 'panda' }, { at: 16900, type: 'panda' },
+    { at: 20500, type: 'panda' }, { at: 20700, type: 'panda' }, { at: 20900, type: 'panda' }, { at: 21100, type: 'panda' }
   ]}
 ];
 
@@ -297,7 +312,11 @@ const HIVE = [
     { at: 13800, type: 'drone' }, { at: 13900, type: 'drone' }, { at: 14000, type: 'drone' },
     { at: 18000, type: 'vespid' }, { at: 18200, type: 'vespid' }, { at: 18400, type: 'vespid' },
     { at: 22500, type: 'striker' }, { at: 22500, type: 'striker' }, { at: 22500, type: 'striker' },
-    { at: 26500, type: 'vespid' }, { at: 26700, type: 'vespid' }
+    { at: 26500, type: 'vespid' }, { at: 26700, type: 'vespid' },
+    { at: 30500, type: 'vespid' }, { at: 30700, type: 'vespid' }, { at: 30900, type: 'vespid' },
+    { at: 34500, type: 'drone' }, { at: 34600, type: 'drone' }, { at: 34700, type: 'drone' },
+    { at: 34800, type: 'drone' }, { at: 34900, type: 'drone' }, { at: 35000, type: 'drone' },
+    { at: 38500, type: 'vespid' }, { at: 38700, type: 'vespid' }, { at: 38900, type: 'vespid' }
   ]}
 ];
 
@@ -331,7 +350,10 @@ const FOREST = [
   { spawns: [
     { at: 500, type: 'grizzly' }, { at: 3500, type: 'grizzly' },
     { at: 7000, type: 'honeybadger' }, { at: 7200, type: 'honeybadger' },
-    { at: 10500, type: 'brown' }, { at: 10700, type: 'brown' }, { at: 10900, type: 'brown' }
+    { at: 10500, type: 'brown' }, { at: 10700, type: 'brown' }, { at: 10900, type: 'brown' },
+    { at: 14500, type: 'grizzly' }, { at: 14700, type: 'grizzly' },
+    { at: 18500, type: 'honeybadger' }, { at: 18700, type: 'honeybadger' }, { at: 18900, type: 'honeybadger' },
+    { at: 22500, type: 'brown' }, { at: 22500, type: 'brown' }, { at: 22500, type: 'brown' }, { at: 22500, type: 'brown' }
   ]}
 ];
 
@@ -357,7 +379,10 @@ const MOUNTAIN = [
   { spawns: [
     { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' }, { at: 900, type: 'grizzly' },
     { at: 6500, type: 'honeybadger' }, { at: 6700, type: 'honeybadger' },
-    { at: 10500, type: 'brown' }, { at: 10500, type: 'brown' }, { at: 10500, type: 'brown' }
+    { at: 10500, type: 'brown' }, { at: 10500, type: 'brown' }, { at: 10500, type: 'brown' },
+    { at: 14500, type: 'grizzly' }, { at: 14700, type: 'grizzly' }, { at: 14900, type: 'grizzly' },
+    { at: 18500, type: 'honeybadger' }, { at: 18700, type: 'honeybadger' }, { at: 18900, type: 'honeybadger' },
+    { at: 22500, type: 'grizzly' }, { at: 22700, type: 'grizzly' }
   ]}
 ];
 
@@ -387,7 +412,10 @@ const VOLCANO = [
     { at: 4500, type: 'honeybadger' }, { at: 4700, type: 'honeybadger' },
     { at: 8500, type: 'lavaBear' },
     { at: 14500, type: 'brown' }, { at: 14700, type: 'brown' }, { at: 14900, type: 'brown' },
-    { at: 18500, type: 'grizzly' }
+    { at: 18500, type: 'grizzly' },
+    { at: 22500, type: 'grizzly' }, { at: 22700, type: 'grizzly' }, { at: 22900, type: 'grizzly' },
+    { at: 26500, type: 'honeybadger' }, { at: 26700, type: 'honeybadger' }, { at: 26900, type: 'honeybadger' },
+    { at: 30500, type: 'brown' }, { at: 30700, type: 'brown' }, { at: 30900, type: 'brown' }
   ]}
 ];
 
@@ -412,7 +440,10 @@ const SWAMP = [
   { spawns: [
     { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' }, { at: 900, type: 'grizzly' },
     { at: 6500, type: 'panda' }, { at: 6700, type: 'panda' }, { at: 6900, type: 'panda' }, { at: 7100, type: 'panda' },
-    { at: 12500, type: 'grizzly' }
+    { at: 12500, type: 'grizzly' },
+    { at: 16500, type: 'panda' }, { at: 16700, type: 'panda' }, { at: 16900, type: 'panda' }, { at: 17100, type: 'panda' },
+    { at: 20500, type: 'grizzly' }, { at: 20700, type: 'grizzly' }, { at: 20900, type: 'grizzly' },
+    { at: 24500, type: 'panda' }, { at: 24700, type: 'panda' }, { at: 24900, type: 'panda' }
   ]}
 ];
 
@@ -442,7 +473,10 @@ const TUNDRA = [
     { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' },
     { at: 4500, type: 'panda' }, { at: 4700, type: 'panda' }, { at: 4900, type: 'panda' },
     { at: 5100, type: 'panda' }, { at: 5300, type: 'panda' },
-    { at: 10500, type: 'panda' }, { at: 10700, type: 'panda' }, { at: 10900, type: 'panda' }
+    { at: 10500, type: 'panda' }, { at: 10700, type: 'panda' }, { at: 10900, type: 'panda' },
+    { at: 14500, type: 'panda' }, { at: 14700, type: 'panda' }, { at: 14900, type: 'panda' },
+    { at: 18500, type: 'grizzly' }, { at: 18700, type: 'grizzly' }, { at: 18900, type: 'grizzly' },
+    { at: 22500, type: 'panda' }, { at: 22700, type: 'panda' }, { at: 22900, type: 'panda' }, { at: 23100, type: 'panda' }
   ]}
 ];
 
@@ -473,7 +507,10 @@ const STORM = [
     { at: 8500, type: 'thunderLord' },
     { at: 14000, type: 'cub' }, { at: 14100, type: 'cub' }, { at: 14200, type: 'cub' },
     { at: 14300, type: 'cub' }, { at: 14400, type: 'cub' },
-    { at: 18500, type: 'grizzly' }, { at: 18700, type: 'grizzly' }
+    { at: 18500, type: 'grizzly' }, { at: 18700, type: 'grizzly' },
+    { at: 22500, type: 'honeybadger' }, { at: 22700, type: 'honeybadger' },
+    { at: 22900, type: 'honeybadger' }, { at: 23100, type: 'honeybadger' },
+    { at: 26500, type: 'grizzly' }, { at: 26700, type: 'grizzly' }, { at: 26900, type: 'grizzly' }
   ]}
 ];
 
@@ -499,7 +536,10 @@ const DESERT = [
   { spawns: [
     { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' }, { at: 900, type: 'grizzly' },
     { at: 6500, type: 'brown' }, { at: 6700, type: 'brown' }, { at: 6900, type: 'brown' }, { at: 7100, type: 'brown' },
-    { at: 11500, type: 'honeybadger' }, { at: 11700, type: 'honeybadger' }
+    { at: 11500, type: 'honeybadger' }, { at: 11700, type: 'honeybadger' },
+    { at: 15500, type: 'grizzly' }, { at: 15700, type: 'grizzly' }, { at: 15900, type: 'grizzly' },
+    { at: 19500, type: 'brown' }, { at: 19700, type: 'brown' }, { at: 19900, type: 'brown' },
+    { at: 23500, type: 'honeybadger' }, { at: 23700, type: 'honeybadger' }, { at: 23900, type: 'honeybadger' }
   ]}
 ];
 
@@ -527,7 +567,11 @@ const SKY = [
     { at: 500, type: 'vespid' }, { at: 700, type: 'vespid' }, { at: 900, type: 'vespid' }, { at: 1100, type: 'vespid' },
     { at: 6500, type: 'drone' }, { at: 6600, type: 'drone' }, { at: 6700, type: 'drone' },
     { at: 6800, type: 'drone' }, { at: 6900, type: 'drone' }, { at: 7000, type: 'drone' },
-    { at: 11500, type: 'striker' }, { at: 11700, type: 'striker' }, { at: 11900, type: 'striker' }
+    { at: 11500, type: 'striker' }, { at: 11700, type: 'striker' }, { at: 11900, type: 'striker' },
+    { at: 15500, type: 'vespid' }, { at: 15700, type: 'vespid' }, { at: 15900, type: 'vespid' }, { at: 16100, type: 'vespid' },
+    { at: 19500, type: 'drone' }, { at: 19600, type: 'drone' }, { at: 19700, type: 'drone' },
+    { at: 19800, type: 'drone' }, { at: 19900, type: 'drone' }, { at: 20000, type: 'drone' },
+    { at: 23500, type: 'striker' }, { at: 23700, type: 'striker' }, { at: 23900, type: 'striker' }
   ]}
 ];
 
@@ -564,7 +608,11 @@ const COSMOS = [
     { at: 22500, type: 'drone' }, { at: 22600, type: 'drone' }, { at: 22700, type: 'drone' },
     { at: 22800, type: 'drone' }, { at: 22900, type: 'drone' }, { at: 23000, type: 'drone' },
     { at: 27500, type: 'grizzly' }, { at: 27700, type: 'grizzly' },
-    { at: 31500, type: 'vespid' }, { at: 31700, type: 'vespid' }, { at: 31900, type: 'vespid' }
+    { at: 31500, type: 'vespid' }, { at: 31700, type: 'vespid' }, { at: 31900, type: 'vespid' },
+    { at: 35500, type: 'drone' }, { at: 35600, type: 'drone' }, { at: 35700, type: 'drone' },
+    { at: 35800, type: 'drone' }, { at: 35900, type: 'drone' }, { at: 36000, type: 'drone' },
+    { at: 39500, type: 'grizzly' }, { at: 39700, type: 'grizzly' }, { at: 39900, type: 'grizzly' }, { at: 40100, type: 'grizzly' },
+    { at: 43500, type: 'vespid' }, { at: 43700, type: 'vespid' }, { at: 43900, type: 'vespid' }, { at: 44100, type: 'vespid' }
   ]}
 ];
 

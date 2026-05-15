@@ -57,9 +57,9 @@ export const BEES = {
   },
   hornet: {
     id: 'hornet', name: 'Hornet', letter: 'Hr',
-    cost: 175, hp: 80,
+    cost: 200, hp: 70,
     kind: 'shooter',
-    range: 4.5, fireMs: 300, damage: 14, splash: 0,
+    range: 4.5, fireMs: 450, damage: 10, splash: 0,
     target: 'globalClosestToHive',
     color: 0xff5030, bulletColor: 0xffaa30
   },
@@ -81,9 +81,9 @@ export const BEES = {
   },
   wasp: {
     id: 'wasp', name: 'Wasp', letter: 'Wp',
-    cost: 200, hp: 60,
+    cost: 225, hp: 50,
     kind: 'shooter',
-    range: 6.5, fireMs: 500, damage: 22, splash: 0,
+    range: 6.5, fireMs: 700, damage: 14, splash: 0,
     target: 'globalClosestToHive',
     color: 0xffeb50, bulletColor: 0xffffaa
   },
