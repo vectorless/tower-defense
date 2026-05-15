@@ -48,14 +48,15 @@ export function drawGrid(g, layout, world, theme) {
 
 // --- Hive -----------------------------------------------------------------
 
-export function drawHive(g, layout, world, hiveHp, hiveMaxHp) {
+export function drawHive(g, layout, world, hiveHp, hiveMaxHp, skinTint) {
   const { originX, originY, cellSize } = layout;
   const cx = originX + world.hiveCol * cellSize + cellSize / 2;
   const cy = originY + (world.rows * cellSize) / 2;
   const radius = Math.min(cellSize * 0.45, (world.rows * cellSize) * 0.35);
 
-  // Outer brown hex.
-  drawHex(g, cx, cy, radius, 0x6b3a1f, 0x3a1d0d, 3);
+  // Outer hex — brown by default, tinted by an equipped hive skin if any.
+  const outerColor = skinTint ?? 0x6b3a1f;
+  drawHex(g, cx, cy, radius, outerColor, 0x3a1d0d, 3);
   // Inner honeycomb cells.
   const small = radius * 0.32;
   const offsets = [[0, 0], [-small * 1.4, -small * 0.8], [small * 1.4, -small * 0.8], [0, small * 1.3]];

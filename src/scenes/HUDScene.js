@@ -17,6 +17,8 @@ export class HUDScene extends Phaser.Scene {
     this.txtMap = this.add.text(0, 0, '', this._textStyle(20)).setDepth(11).setOrigin(0.5, 0);
     this.txtWave = this.add.text(0, 0, '', this._textStyle(22)).setDepth(11).setOrigin(0.5, 0);
     this.txtPhase = this.add.text(0, 0, '', this._textStyle(16)).setDepth(11).setOrigin(0.5, 0);
+    this.txtCoins = this.add.text(0, 0, '', this._textStyle(22)).setDepth(11).setOrigin(1, 0);
+    this.txtWipes = this.add.text(0, 0, '', this._textStyle(18)).setDepth(11).setOrigin(1, 0);
 
     this.palette = [];
     this._unlockedKey = '';
@@ -132,6 +134,8 @@ export class HUDScene extends Phaser.Scene {
     this.txtMap.setPosition(width / 2, 8);
     this.txtWave.setPosition(width / 2, 38);
     this.txtPhase.setPosition(width / 2, 72);
+    this.txtCoins.setPosition(width - 24, 20);
+    this.txtWipes.setPosition(width - 24, 60);
 
     const n = this.palette.length;
     if (n === 0) return;
@@ -169,10 +173,15 @@ export class HUDScene extends Phaser.Scene {
     const map = MAPS[mapId];
     const waveCount = (WAVES_BY_MAP[mapId] || []).length;
 
+    const coins = this.registry.get('coins') ?? 0;
+    const wipes = this.registry.get('wipes') ?? 0;
+
     this.txtHoney.setText(`🍯 Honey: ${honey}`);
     this.txtHive.setText(`🏠 Hive: ${hiveHp} / ${WORLD.hiveHp}`);
     this.txtMap.setText(map ? map.name : '');
     this.txtWave.setText(`Wave ${waveIdx + 1} / ${waveCount}`);
+    this.txtCoins.setText(`💰 ${coins}`);
+    this.txtWipes.setText(wipes > 0 ? `💨 Wipes: ${wipes} (W)` : '');
 
     if (phase === 'prepare') {
       const left = Math.max(0, Math.ceil((WORLD.prepareTimeMs - phaseMs) / 1000));

@@ -106,6 +106,6 @@ export class MapClearScene extends Phaser.Scene {
 
   _continue() {
     this.scene.stop('HUDScene');
-    this.scene.start('GameScene');
+    this.scene.start('ShopScene');
   }
 }

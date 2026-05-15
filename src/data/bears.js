@@ -23,7 +23,7 @@ export const BEARS = {
     color: 0x202020, headColor: 0xe0e0e0, r: 16
   },
   boss: {
-    id: 'boss', name: 'Bear Boss',
+    id: 'boss', name: 'Bear Boss', isBoss: true,
     hp: 3600, speed: 25, meleeMs: 1200, meleeDmg: 9999, bounty: 100,
     color: 0x2a1408, headColor: 0x3a2010, r: 90
   },
@@ -49,23 +49,23 @@ export const BEARS = {
     color: 0xff5030, accentColor: 0x000000, r: 22
   },
   darkQueen: {
-    id: 'darkQueen', name: 'Dark Queen', isBee: true,
+    id: 'darkQueen', name: 'Dark Queen', isBee: true, isBoss: true,
     hp: 8000, speed: 14, meleeMs: 1200, meleeDmg: 9999, bounty: 300,
     color: 0x6020a0, accentColor: 0xff0044, r: 100
   },
   // --- Late-game bosses (maps 9 / 12 / 15) ---
   lavaBear: {
-    id: 'lavaBear', name: 'Lava Bear',
+    id: 'lavaBear', name: 'Lava Bear', isBoss: true,
     hp: 5000, speed: 30, meleeMs: 1200, meleeDmg: 9999, bounty: 200,
     color: 0xff4400, headColor: 0xff6622, r: 95
   },
   thunderLord: {
-    id: 'thunderLord', name: 'Thunder Lord',
+    id: 'thunderLord', name: 'Thunder Lord', isBoss: true,
     hp: 6000, speed: 40, meleeMs: 1000, meleeDmg: 9999, bounty: 250,
     color: 0x6688ee, headColor: 0xaaccff, r: 95
   },
   eternalBear: {
-    id: 'eternalBear', name: 'Eternal Bear',
+    id: 'eternalBear', name: 'Eternal Bear', isBoss: true,
     hp: 12000, speed: 22, meleeMs: 1100, meleeDmg: 9999, bounty: 500,
     color: 0x101020, headColor: 0x202032, r: 120
   }

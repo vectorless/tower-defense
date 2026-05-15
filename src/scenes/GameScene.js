@@ -4,10 +4,12 @@ import { BEES } from '../data/bees.js';
 import { BEARS } from '../data/bears.js';
 import { WAVES_BY_MAP } from '../data/waves.js';
 import { MAPS } from '../data/maps.js';
+import { SHOP_ITEMS } from '../data/shop.js';
 import {
   addHoney, damageHive,
   setWaveIndex, setWavePhase, tickWavePhase,
-  winRun, resetForMap, advanceMap
+  winRun, resetForMap, advanceMap,
+  addCoins, useWipe
 } from '../state.js';
 import {
   computeLayout, drawGrid, drawHive, drawBee, drawBear,
@@ -59,6 +61,8 @@ export class GameScene extends Phaser.Scene {
       this.scene.bringToTop('RedeemScene');
     });
 
+    this.input.keyboard.on('keydown-W', () => this._tryWipe());
+
     this.scale.on('resize', this._onResize, this);
 
     // Launch HUD overlay if not already running.
@@ -82,6 +86,21 @@ export class GameScene extends Phaser.Scene {
   _redrawGrid() {
     this.gridGraphics.clear();
     drawGrid(this.gridGraphics, this.layout, this.activeWorld, this.currentMap);
+  }
+
+  // Consume one wipe — kill every non-boss bear on the field. Bosses are spared.
+  _tryWipe() {
+    if (this.registry.get('gameOver') || this.registry.get('victory')) return;
+    if (!useWipe(this.registry)) return;
+    // Cinematic full-screen white flash.
+    const flash = this.add.rectangle(0, 0, this.scale.gameSize.width, this.scale.gameSize.height,
+      0xffffff, 0.8).setOrigin(0).setDepth(6);
+    this.tweens.add({ targets: flash, alpha: 0, duration: 400, onComplete: () => flash.destroy() });
+    for (const bear of this.bears) {
+      const spec = BEARS[bear.type];
+      if (spec.isBoss) continue;
+      bear.hp = 0;   // _updateBears' next pass will award bounty/coins and remove it
+    }
   }
 
   // Refund a placed bee for its full purchase cost.
@@ -252,7 +271,9 @@ export class GameScene extends Phaser.Scene {
         const bounty = Phaser.Math.Between(WORLD.bearKillHoneyMin, WORLD.bearKillHoneyMax);
         const reward = Math.max(spec.bounty ?? 0, bounty);
         addHoney(this.registry, reward);
-        this._spawnToast(`+${reward}`, bear.x, this._laneY(bear.lane));
+        const coinDrop = Math.max(1, Math.floor((spec.bounty ?? 5) / 10));
+        addCoins(this.registry, coinDrop);
+        this._spawnToast(`+${reward}🍯  +${coinDrop}💰`, bear.x, this._laneY(bear.lane));
         this.bears.splice(i, 1);
       }
     }
@@ -447,8 +468,10 @@ export class GameScene extends Phaser.Scene {
     g.clear();
     const now = this.time.now;
 
+    const skinId = this.registry.get('activeHiveSkin');
+    const skinTint = skinId ? SHOP_ITEMS[skinId]?.tint : null;
     drawHive(g, this.layout, this.activeWorld,
-      this.registry.get('hiveHp') ?? 0, this.activeWorld.hiveHp);
+      this.registry.get('hiveHp') ?? 0, this.activeWorld.hiveHp, skinTint);
 
     // Bees first (under bears so bears chew on top visually).
     for (const bee of this.bees) drawBee(g, bee, this.layout, now);

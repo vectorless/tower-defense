@@ -12,6 +12,12 @@ export function initState(registry) {
   registry.set('unlockedBees', MAPS.garden.startingBees.slice());
   registry.set('lastUnlocked', []);           // shown on MapClearScene
 
+  // Persistent meta (coins, inventory, skins) — kept across maps.
+  registry.set('coins', 0);
+  registry.set('wipes', 0);
+  registry.set('ownedSkins', []);
+  registry.set('activeHiveSkin', null);
+
   // Per-map play state.
   registry.set('honey', WORLD.startingHoney);
   registry.set('hiveHp', WORLD.hiveHp);
@@ -112,6 +118,42 @@ export function tickWavePhase(registry, deltaMs) {
 
 export function setSelectedBee(registry, type) {
   registry.set('selectedBeeType', type ?? null);
+}
+
+// --- Coins / shop --------------------------------------------------------
+
+export function addCoins(registry, n) {
+  const next = Math.max(0, (registry.get('coins') ?? 0) + n);
+  registry.set('coins', next);
+  return next;
+}
+
+export function spendCoins(registry, n) {
+  const cur = registry.get('coins') ?? 0;
+  if (cur < n) return false;
+  registry.set('coins', cur - n);
+  return true;
+}
+
+export function addWipe(registry, n = 1) {
+  registry.set('wipes', (registry.get('wipes') ?? 0) + n);
+}
+
+export function useWipe(registry) {
+  const cur = registry.get('wipes') ?? 0;
+  if (cur <= 0) return false;
+  registry.set('wipes', cur - 1);
+  return true;
+}
+
+export function ownSkin(registry, id) {
+  const owned = registry.get('ownedSkins') ?? [];
+  if (owned.includes(id)) return;
+  registry.set('ownedSkins', [...owned, id]);
+}
+
+export function setActiveHiveSkin(registry, id) {
+  registry.set('activeHiveSkin', id);
 }
 
 // --- End-of-run ----------------------------------------------------------

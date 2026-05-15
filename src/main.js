@@ -5,6 +5,7 @@ import { HUDScene } from './scenes/HUDScene.js';
 import { GameOverScene } from './scenes/GameOverScene.js';
 import { VictoryScene } from './scenes/VictoryScene.js';
 import { MapClearScene } from './scenes/MapClearScene.js';
+import { ShopScene } from './scenes/ShopScene.js';
 import { RedeemScene } from './scenes/RedeemScene.js';
 import { initState } from './state.js';
 
@@ -17,7 +18,7 @@ const game = new Phaser.Game({
     width: '100%',
     height: '100%'
   },
-  scene: [MenuScene, GameScene, HUDScene, GameOverScene, VictoryScene, MapClearScene, RedeemScene]
+  scene: [MenuScene, GameScene, HUDScene, GameOverScene, VictoryScene, MapClearScene, ShopScene, RedeemScene]
 });
 
 initState(game.registry);
