@@ -301,11 +301,287 @@ const HIVE = [
   ]}
 ];
 
+// --- Late-game maps -------------------------------------------------------
+
+const FOREST = [
+  { spawns: [
+    { at: 500, type: 'cub' }, { at: 2500, type: 'cub' }, { at: 4500, type: 'cub' },
+    { at: 7500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'cub' }, { at: 2000, type: 'cub' }, { at: 3500, type: 'cub' },
+    { at: 6500, type: 'brown' }, { at: 9500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'brown' }, { at: 3500, type: 'honeybadger' },
+    { at: 7000, type: 'brown' }, { at: 10500, type: 'cub' }, { at: 10700, type: 'cub' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'brown' }, { at: 500, type: 'brown' },
+    { at: 4500, type: 'honeybadger' },
+    { at: 8000, type: 'cub' }, { at: 8200, type: 'cub' }, { at: 8400, type: 'cub' },
+    { at: 12000, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' },
+    { at: 4500, type: 'brown' }, { at: 4500, type: 'brown' },
+    { at: 8500, type: 'honeybadger' }, { at: 8700, type: 'honeybadger' },
+    { at: 12500, type: 'cub' }, { at: 12700, type: 'cub' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 3500, type: 'grizzly' },
+    { at: 7000, type: 'honeybadger' }, { at: 7200, type: 'honeybadger' },
+    { at: 10500, type: 'brown' }, { at: 10700, type: 'brown' }, { at: 10900, type: 'brown' }
+  ]}
+];
+
+const MOUNTAIN = [
+  { spawns: [
+    { at: 500, type: 'brown' }, { at: 4500, type: 'brown' }, { at: 8500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'brown' }, { at: 4000, type: 'grizzly' }, { at: 8500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'brown' }, { at: 500, type: 'brown' },
+    { at: 4500, type: 'grizzly' }, { at: 9500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 4500, type: 'grizzly' },
+    { at: 8500, type: 'cub' }, { at: 8700, type: 'cub' }, { at: 8900, type: 'cub' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 3500, type: 'grizzly' }, { at: 6500, type: 'grizzly' },
+    { at: 10500, type: 'brown' }, { at: 10700, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' }, { at: 900, type: 'grizzly' },
+    { at: 6500, type: 'honeybadger' }, { at: 6700, type: 'honeybadger' },
+    { at: 10500, type: 'brown' }, { at: 10500, type: 'brown' }, { at: 10500, type: 'brown' }
+  ]}
+];
+
+const VOLCANO = [
+  { spawns: [
+    { at: 500, type: 'cub' }, { at: 2500, type: 'brown' }, { at: 6500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'brown' }, { at: 4000, type: 'grizzly' }, { at: 8500, type: 'cub' }, { at: 8700, type: 'cub' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 4500, type: 'honeybadger' },
+    { at: 8500, type: 'brown' }, { at: 8700, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 500, type: 'grizzly' },
+    { at: 5500, type: 'honeybadger' }, { at: 5700, type: 'honeybadger' },
+    { at: 10500, type: 'cub' }, { at: 10700, type: 'cub' }, { at: 10900, type: 'cub' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 3500, type: 'grizzly' }, { at: 6500, type: 'grizzly' },
+    { at: 9500, type: 'honeybadger' }, { at: 9700, type: 'honeybadger' }, { at: 9900, type: 'honeybadger' }
+  ]},
+  // BOSS: Lava Bear.
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' },
+    { at: 4500, type: 'honeybadger' }, { at: 4700, type: 'honeybadger' },
+    { at: 8500, type: 'lavaBear' },
+    { at: 14500, type: 'brown' }, { at: 14700, type: 'brown' }, { at: 14900, type: 'brown' },
+    { at: 18500, type: 'grizzly' }
+  ]}
+];
+
+const SWAMP = [
+  { spawns: [
+    { at: 500, type: 'brown' }, { at: 3500, type: 'brown' }, { at: 7500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 5500, type: 'grizzly' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'panda' }, { at: 3500, type: 'panda' }, { at: 7500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'panda' }, { at: 3000, type: 'panda' }, { at: 5500, type: 'panda' },
+    { at: 8500, type: 'cub' }, { at: 8700, type: 'cub' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 4500, type: 'grizzly' },
+    { at: 8500, type: 'panda' }, { at: 8700, type: 'panda' }, { at: 8900, type: 'panda' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' }, { at: 900, type: 'grizzly' },
+    { at: 6500, type: 'panda' }, { at: 6700, type: 'panda' }, { at: 6900, type: 'panda' }, { at: 7100, type: 'panda' },
+    { at: 12500, type: 'grizzly' }
+  ]}
+];
+
+const TUNDRA = [
+  { spawns: [
+    { at: 500, type: 'panda' }, { at: 3500, type: 'panda' }, { at: 7500, type: 'panda' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'panda' }, { at: 500, type: 'panda' },
+    { at: 5500, type: 'panda' }, { at: 5700, type: 'panda' }, { at: 9500, type: 'panda' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'panda' }, { at: 700, type: 'panda' }, { at: 3500, type: 'grizzly' },
+    { at: 7500, type: 'panda' }, { at: 7700, type: 'panda' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'panda' }, { at: 700, type: 'panda' }, { at: 900, type: 'panda' },
+    { at: 4500, type: 'grizzly' }, { at: 4700, type: 'grizzly' },
+    { at: 9500, type: 'panda' }, { at: 9700, type: 'panda' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'panda' }, { at: 700, type: 'panda' }, { at: 900, type: 'panda' }, { at: 1100, type: 'panda' },
+    { at: 5500, type: 'panda' }, { at: 5700, type: 'panda' }, { at: 5900, type: 'panda' },
+    { at: 10500, type: 'panda' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' },
+    { at: 4500, type: 'panda' }, { at: 4700, type: 'panda' }, { at: 4900, type: 'panda' },
+    { at: 5100, type: 'panda' }, { at: 5300, type: 'panda' },
+    { at: 10500, type: 'panda' }, { at: 10700, type: 'panda' }, { at: 10900, type: 'panda' }
+  ]}
+];
+
+const STORM = [
+  { spawns: [
+    { at: 500, type: 'cub' }, { at: 2500, type: 'cub' }, { at: 4500, type: 'brown' }, { at: 8500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'honeybadger' }, { at: 4500, type: 'honeybadger' },
+    { at: 8500, type: 'brown' }, { at: 10500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 4500, type: 'grizzly' }, { at: 9500, type: 'honeybadger' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 500, type: 'grizzly' },
+    { at: 5500, type: 'honeybadger' }, { at: 5700, type: 'honeybadger' },
+    { at: 10500, type: 'brown' }, { at: 10500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 3500, type: 'grizzly' }, { at: 6500, type: 'grizzly' },
+    { at: 9500, type: 'honeybadger' }, { at: 9700, type: 'honeybadger' }, { at: 9900, type: 'honeybadger' }
+  ]},
+  // BOSS: Thunder Lord.
+  { spawns: [
+    { at: 500, type: 'honeybadger' }, { at: 700, type: 'honeybadger' }, { at: 900, type: 'honeybadger' },
+    { at: 4500, type: 'grizzly' }, { at: 4700, type: 'grizzly' },
+    { at: 8500, type: 'thunderLord' },
+    { at: 14000, type: 'cub' }, { at: 14100, type: 'cub' }, { at: 14200, type: 'cub' },
+    { at: 14300, type: 'cub' }, { at: 14400, type: 'cub' },
+    { at: 18500, type: 'grizzly' }, { at: 18700, type: 'grizzly' }
+  ]}
+];
+
+const DESERT = [
+  { spawns: [
+    { at: 500, type: 'cub' }, { at: 1500, type: 'cub' }, { at: 3500, type: 'cub' }, { at: 5500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'cub' }, { at: 2000, type: 'cub' },
+    { at: 4500, type: 'brown' }, { at: 8500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'brown' }, { at: 3500, type: 'brown' }, { at: 7500, type: 'grizzly' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'brown' }, { at: 500, type: 'brown' }, { at: 500, type: 'brown' },
+    { at: 6500, type: 'honeybadger' }, { at: 10500, type: 'brown' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 4500, type: 'grizzly' },
+    { at: 8500, type: 'cub' }, { at: 8700, type: 'cub' }, { at: 8900, type: 'cub' }, { at: 9100, type: 'cub' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' }, { at: 900, type: 'grizzly' },
+    { at: 6500, type: 'brown' }, { at: 6700, type: 'brown' }, { at: 6900, type: 'brown' }, { at: 7100, type: 'brown' },
+    { at: 11500, type: 'honeybadger' }, { at: 11700, type: 'honeybadger' }
+  ]}
+];
+
+const SKY = [
+  { spawns: [
+    { at: 500, type: 'drone' }, { at: 2500, type: 'drone' }, { at: 4500, type: 'drone' }, { at: 7500, type: 'drone' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'drone' }, { at: 700, type: 'drone' },
+    { at: 4500, type: 'striker' }, { at: 7500, type: 'striker' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'striker' }, { at: 3500, type: 'striker' },
+    { at: 7500, type: 'vespid' }, { at: 11500, type: 'drone' }, { at: 11700, type: 'drone' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'vespid' }, { at: 4500, type: 'vespid' },
+    { at: 8500, type: 'drone' }, { at: 8700, type: 'drone' }, { at: 8900, type: 'drone' }, { at: 9100, type: 'drone' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'vespid' }, { at: 3500, type: 'vespid' }, { at: 6500, type: 'vespid' },
+    { at: 10500, type: 'striker' }, { at: 10700, type: 'striker' }, { at: 10900, type: 'striker' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'vespid' }, { at: 700, type: 'vespid' }, { at: 900, type: 'vespid' }, { at: 1100, type: 'vespid' },
+    { at: 6500, type: 'drone' }, { at: 6600, type: 'drone' }, { at: 6700, type: 'drone' },
+    { at: 6800, type: 'drone' }, { at: 6900, type: 'drone' }, { at: 7000, type: 'drone' },
+    { at: 11500, type: 'striker' }, { at: 11700, type: 'striker' }, { at: 11900, type: 'striker' }
+  ]}
+];
+
+const COSMOS = [
+  { spawns: [
+    { at: 500, type: 'cub' }, { at: 2500, type: 'drone' },
+    { at: 5500, type: 'brown' }, { at: 8500, type: 'striker' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 4500, type: 'vespid' },
+    { at: 8500, type: 'brown' }, { at: 11500, type: 'panda' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'panda' }, { at: 500, type: 'panda' },
+    { at: 5500, type: 'vespid' }, { at: 5700, type: 'vespid' },
+    { at: 10500, type: 'grizzly' }, { at: 12500, type: 'grizzly' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' },
+    { at: 5500, type: 'boss' },
+    { at: 11500, type: 'striker' }, { at: 11700, type: 'striker' }, { at: 11900, type: 'striker' }
+  ]},
+  { spawns: [
+    { at: 500, type: 'vespid' }, { at: 700, type: 'vespid' }, { at: 900, type: 'vespid' },
+    { at: 6500, type: 'darkQueen' },
+    { at: 14500, type: 'grizzly' }, { at: 14700, type: 'grizzly' }, { at: 14900, type: 'grizzly' }
+  ]},
+  // FINAL BOSS: The Eternal Bear.
+  { spawns: [
+    { at: 500, type: 'grizzly' }, { at: 700, type: 'grizzly' }, { at: 900, type: 'grizzly' },
+    { at: 4500, type: 'vespid' }, { at: 4700, type: 'vespid' }, { at: 4900, type: 'vespid' },
+    { at: 8500, type: 'darkQueen' },
+    { at: 15500, type: 'eternalBear' },
+    { at: 22500, type: 'drone' }, { at: 22600, type: 'drone' }, { at: 22700, type: 'drone' },
+    { at: 22800, type: 'drone' }, { at: 22900, type: 'drone' }, { at: 23000, type: 'drone' },
+    { at: 27500, type: 'grizzly' }, { at: 27700, type: 'grizzly' },
+    { at: 31500, type: 'vespid' }, { at: 31700, type: 'vespid' }, { at: 31900, type: 'vespid' }
+  ]}
+];
+
 export const WAVES_BY_MAP = {
   garden: GARDEN,
   playground: PLAYGROUND,
   sandpit: SANDPIT,
   cave: CAVE,
   ice: ICE,
-  hive: HIVE
+  hive: HIVE,
+  forest: FOREST,
+  mountain: MOUNTAIN,
+  volcano: VOLCANO,
+  swamp: SWAMP,
+  tundra: TUNDRA,
+  storm: STORM,
+  desert: DESERT,
+  sky: SKY,
+  cosmos: COSMOS
 };

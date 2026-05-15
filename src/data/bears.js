@@ -52,5 +52,21 @@ export const BEARS = {
     id: 'darkQueen', name: 'Dark Queen', isBee: true,
     hp: 8000, speed: 14, meleeMs: 1200, meleeDmg: 9999, bounty: 300,
     color: 0x6020a0, accentColor: 0xff0044, r: 100
+  },
+  // --- Late-game bosses (maps 9 / 12 / 15) ---
+  lavaBear: {
+    id: 'lavaBear', name: 'Lava Bear',
+    hp: 5000, speed: 30, meleeMs: 1200, meleeDmg: 9999, bounty: 200,
+    color: 0xff4400, headColor: 0xff6622, r: 95
+  },
+  thunderLord: {
+    id: 'thunderLord', name: 'Thunder Lord',
+    hp: 6000, speed: 40, meleeMs: 1000, meleeDmg: 9999, bounty: 250,
+    color: 0x6688ee, headColor: 0xaaccff, r: 95
+  },
+  eternalBear: {
+    id: 'eternalBear', name: 'Eternal Bear',
+    hp: 12000, speed: 22, meleeMs: 1100, meleeDmg: 9999, bounty: 500,
+    color: 0x101020, headColor: 0x202032, r: 120
   }
 };

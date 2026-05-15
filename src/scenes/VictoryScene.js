@@ -24,12 +24,12 @@ export class VictoryScene extends Phaser.Scene {
     }).setOrigin(0.5).setDepth(21);
 
     this._sub = this.add.text(0, 0,
-      'Garden, Playground, Sandpit, Cave, Ice — and the Hive itself.', {
+      'Fifteen lands defended. The Eternal Bear has fallen.', {
       fontFamily: 'system-ui, sans-serif',
       fontSize: '24px', color: '#fff2c0'
     }).setOrigin(0.5).setDepth(21);
 
-    this._sub2 = this.add.text(0, 0, 'The Dark Queen has fallen. The hive is safe.', {
+    this._sub2 = this.add.text(0, 0, 'The hive is safe. The cosmos is at peace.', {
       fontFamily: 'system-ui, sans-serif',
       fontSize: '20px', color: '#fff2c0'
     }).setOrigin(0.5).setDepth(21);
