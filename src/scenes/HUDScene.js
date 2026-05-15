@@ -14,10 +14,9 @@ export class HUDScene extends Phaser.Scene {
 
     this.txtHoney = this.add.text(0, 0, '', this._textStyle(24)).setDepth(11);
     this.txtHive = this.add.text(0, 0, '', this._textStyle(20)).setDepth(11);
-    this.txtLevel = this.add.text(0, 0, '', this._textStyle(14)).setDepth(11).setOrigin(0.5, 0);
     this.txtMap = this.add.text(0, 0, '', this._textStyle(22)).setDepth(11).setOrigin(0.5, 0);
-    this.txtWave = this.add.text(0, 0, '', this._textStyle(20)).setDepth(11).setOrigin(0.5, 0);
-    this.txtPhase = this.add.text(0, 0, '', this._textStyle(15)).setDepth(11).setOrigin(0.5, 0);
+    this.txtWave = this.add.text(0, 0, '', this._textStyle(22)).setDepth(11).setOrigin(0.5, 0);
+    this.txtPhase = this.add.text(0, 0, '', this._textStyle(16)).setDepth(11).setOrigin(0.5, 0);
     this.txtCoins = this.add.text(0, 0, '', this._textStyle(22)).setDepth(11).setOrigin(1, 0);
     this.txtWipes = this.add.text(0, 0, '', this._textStyle(18)).setDepth(11).setOrigin(1, 0);
 
@@ -132,10 +131,9 @@ export class HUDScene extends Phaser.Scene {
 
     this.txtHoney.setPosition(24, 20);
     this.txtHive.setPosition(24, 60);
-    this.txtLevel.setPosition(width / 2, 4);
-    this.txtMap.setPosition(width / 2, 22);
-    this.txtWave.setPosition(width / 2, 54);
-    this.txtPhase.setPosition(width / 2, 82);
+    this.txtMap.setPosition(width / 2, 8);
+    this.txtWave.setPosition(width / 2, 38);
+    this.txtPhase.setPosition(width / 2, 72);
     this.txtCoins.setPosition(width - 24, 20);
     this.txtWipes.setPosition(width - 24, 60);
 
@@ -179,10 +177,12 @@ export class HUDScene extends Phaser.Scene {
     const wipes = this.registry.get('wipes') ?? 0;
 
     const levelIdx = MAP_ORDER.indexOf(mapId);
+    const levelLabel = levelIdx >= 0
+      ? `Level ${levelIdx + 1} / ${MAP_ORDER.length}`
+      : '';
     this.txtHoney.setText(`🍯 Honey: ${honey}`);
     this.txtHive.setText(`🏠 Hive: ${hiveHp} / ${WORLD.hiveHp}`);
-    this.txtLevel.setText(levelIdx >= 0 ? `LEVEL ${levelIdx + 1} / ${MAP_ORDER.length}` : '');
-    this.txtMap.setText(map ? map.name : '');
+    this.txtMap.setText(map ? `${levelLabel}  ·  ${map.name}` : levelLabel);
     this.txtWave.setText(`Wave ${waveIdx + 1} / ${waveCount}`);
     this.txtCoins.setText(`💰 ${coins}`);
     this.txtWipes.setText(wipes > 0 ? `💨 Wipes: ${wipes} (W)` : '');
