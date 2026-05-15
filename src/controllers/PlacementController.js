@@ -47,9 +47,17 @@ export class PlacementController {
   }
 
   _onDown(p) {
-    const type = this.scene.registry.get('selectedBeeType');
-    if (!type) return;
+    if (this.scene.registry.get('gameOver') || this.scene.registry.get('victory')) return;
     const { col, row } = this._cellFromPointer(p);
+    const type = this.scene.registry.get('selectedBeeType');
+
+    // No bee selected → clicking a placed bee sells it for a full refund.
+    if (!type) {
+      const bee = this.scene.beesByCell.get(`${col},${row}`);
+      if (bee) this.scene.sellBee(bee);
+      return;
+    }
+
     if (!this._isPlaceable(col, row)) return;
     const spec = BEES[type];
     if (!spendHoney(this.scene.registry, spec.cost)) return;
@@ -58,11 +66,28 @@ export class PlacementController {
   }
 
   render(g) {
-    const type = this.scene.registry.get('selectedBeeType');
-    if (!type) return;
     if (this.hoverCol < 0 || this.hoverRow < 0) return;
     const layout = this.scene.layout;
     if (!layout) return;
+
+    const type = this.scene.registry.get('selectedBeeType');
+
+    if (!type) {
+      // Sell-hover indicator: red dashed outline + refund label.
+      const bee = this.scene.beesByCell.get(`${this.hoverCol},${this.hoverRow}`);
+      if (!bee) return;
+      const { originX, originY, cellSize } = layout;
+      const cx = originX + this.hoverCol * cellSize + cellSize / 2;
+      const cy = originY + this.hoverRow * cellSize + cellSize / 2;
+      g.lineStyle(3, 0xff4444, 0.9);
+      g.strokeRect(cx - cellSize * 0.45, cy - cellSize * 0.45,
+                   cellSize * 0.9, cellSize * 0.9);
+      g.fillStyle(0xff4444, 0.15);
+      g.fillRect(cx - cellSize * 0.45, cy - cellSize * 0.45,
+                 cellSize * 0.9, cellSize * 0.9);
+      return;
+    }
+
     // Refresh validity (honey could have changed since pointer move).
     const honey = this.scene.registry.get('honey') ?? 0;
     const valid = this._isPlaceable(this.hoverCol, this.hoverRow) && honey >= BEES[type].cost;

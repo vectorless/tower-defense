@@ -84,6 +84,21 @@ export class GameScene extends Phaser.Scene {
     drawGrid(this.gridGraphics, this.layout, this.activeWorld, this.currentMap);
   }
 
+  // Refund a placed bee for its full purchase cost.
+  sellBee(bee) {
+    const spec = BEES[bee.type];
+    addHoney(this.registry, spec.cost);
+    this.beesByCell.delete(`${bee.col},${bee.row}`);
+    const idx = this.bees.indexOf(bee);
+    if (idx >= 0) this.bees.splice(idx, 1);
+    const { originX, originY, cellSize } = this.layout;
+    this._spawnToast(
+      `+${spec.cost}🍯`,
+      originX + bee.col * cellSize + cellSize / 2,
+      originY + bee.row * cellSize + cellSize / 2
+    );
+  }
+
   // Called by PlacementController on a successful purchase.
   placeBee(type, col, row) {
     const spec = BEES[type];
