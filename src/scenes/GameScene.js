@@ -209,10 +209,13 @@ export class GameScene extends Phaser.Scene {
       : Phaser.Math.Between(0, this.activeWorld.rows - 1);
     const { originX, cellSize } = this.layout;
     const spawnX = originX + WORLD.cols * cellSize + spec.r + 4;
+    const elapsedMs = this.time.now - (this.mapStartMs ?? this.time.now);
+    const scale = Math.min(3, 1 + elapsedMs / 90000);
+    const hp = Math.round(spec.hp * scale);
     this.bears.push({
       type, lane,
       x: spawnX,
-      hp: spec.hp, maxHp: spec.hp,
+      hp, maxHp: hp,
       meleeCdMs: 0,
       damageFlashUntil: 0,
       stunnedUntil: 0,
