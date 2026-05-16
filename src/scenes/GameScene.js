@@ -36,6 +36,7 @@ export class GameScene extends Phaser.Scene {
     this.bears = [];
     this.projectiles = [];
     this.splashes = [];
+    this.particles = [];
     this.beesByCell = new Map();      // key `${col},${row}` → bee
     this.bearsByLane = Array.from({ length: this.activeWorld.rows }, () => []);
     this.spawnIndex = 0;
@@ -161,6 +162,7 @@ export class GameScene extends Phaser.Scene {
       this._updateBees(delta);
       this._updateProjectiles(delta);
       this._updateSplashes(delta);
+      this._updateParticles(delta);
       this._cullDeadBees();
     }
 
@@ -329,6 +331,7 @@ export class GameScene extends Phaser.Scene {
       const damage = spec.damage * bee.auraDamageMult;
       target.hp -= damage;
       target.damageFlashUntil = now + 80;
+      this._spawnHitParticles(target.x, this._laneY(target.lane), spec.bulletColor, 14);
 
       // Splash damage for bombers.
       if (spec.splash > 0) {
@@ -340,12 +343,14 @@ export class GameScene extends Phaser.Scene {
           if (dx * dx + dy * dy <= splashR * splashR) {
             other.hp -= damage * 0.7;
             other.damageFlashUntil = now + 80;
+            this._spawnHitParticles(other.x, this._laneY(other.lane), spec.bulletColor, 10);
           }
         }
         this.splashes.push({
           x: target.x, y: this._laneY(target.lane),
           age: 0, durationMs: 220, maxRadius: splashR
         });
+        this._spawnHitParticles(target.x, this._laneY(target.lane), spec.bulletColor, 24);
       }
 
       // Hitscan projectile (visual only — damage already applied).
@@ -441,6 +446,35 @@ export class GameScene extends Phaser.Scene {
     }
   }
 
+  _spawnHitParticles(x, y, color, count = 14) {
+    for (let i = 0; i < count; i++) {
+      const ang = Math.random() * Math.PI * 2;
+      const spd = 80 + Math.random() * 220;
+      this.particles.push({
+        x, y,
+        vx: Math.cos(ang) * spd,
+        vy: Math.sin(ang) * spd - 60,
+        age: 0,
+        life: 350 + Math.random() * 350,
+        radius: 2 + Math.random() * 3,
+        color
+      });
+    }
+  }
+
+  _updateParticles(delta) {
+    const dt = delta / 1000;
+    for (let i = this.particles.length - 1; i >= 0; i--) {
+      const p = this.particles[i];
+      p.age += delta;
+      p.x += p.vx * dt;
+      p.y += p.vy * dt;
+      p.vy += 500 * dt;   // gravity
+      p.vx *= 0.92;
+      if (p.age >= p.life) this.particles.splice(i, 1);
+    }
+  }
+
   // --- Toasts -------------------------------------------------------------
 
   _spawnToast(text, x, y) {
@@ -499,6 +533,13 @@ export class GameScene extends Phaser.Scene {
 
     // Splashes.
     for (const s of this.splashes) drawSplash(g, s, this.layout);
+
+    // Hit particles.
+    for (const p of this.particles) {
+      const t = p.age / p.life;
+      g.fillStyle(p.color, Math.max(0, 1 - t));
+      g.fillCircle(p.x, p.y, p.radius * (1 - t * 0.5));
+    }
 
     // Placement ghost on top.
     this.placement.render(g);
