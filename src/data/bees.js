@@ -14,7 +14,7 @@ export const BEES = {
   },
   soldier: {
     id: 'soldier', name: 'Soldier', letter: 'S',
-    cost: 100, hp: 140,
+    cost: 125, hp: 140,
     kind: 'shooter',
     range: 1.8, fireMs: 1100, damage: 32, splash: 0,
     target: 'globalClosestToHive',
@@ -22,7 +22,7 @@ export const BEES = {
   },
   sniper: {
     id: 'sniper', name: 'Sniper', letter: 'Sn',
-    cost: 150, hp: 50,
+    cost: 188, hp: 50,
     kind: 'shooter',
     range: 9.0, fireMs: 1800, damage: 55, splash: 0,
     target: 'globalClosestToHive',
@@ -57,7 +57,7 @@ export const BEES = {
   },
   hornet: {
     id: 'hornet', name: 'Hornet', letter: 'Hr',
-    cost: 200, hp: 70,
+    cost: 250, hp: 70,
     kind: 'shooter',
     range: 4.5, fireMs: 450, damage: 10, splash: 0,
     target: 'globalClosestToHive',
@@ -65,7 +65,7 @@ export const BEES = {
   },
   stingerLord: {
     id: 'stingerLord', name: 'Stinger Lord', letter: 'Sl',
-    cost: 250, hp: 110,
+    cost: 313, hp: 110,
     kind: 'shooter',
     range: 5.0, fireMs: 1600, damage: 45, splash: 1.8,
     target: 'globalClosestToHive',
@@ -73,7 +73,7 @@ export const BEES = {
   },
   bumblebee: {
     id: 'bumblebee', name: 'Bumblebee', letter: 'Bb',
-    cost: 130, hp: 350,
+    cost: 163, hp: 350,
     kind: 'shooter',
     range: 1.8, fireMs: 1500, damage: 60, splash: 0,
     target: 'firstInLane',
@@ -81,7 +81,7 @@ export const BEES = {
   },
   wasp: {
     id: 'wasp', name: 'Wasp', letter: 'Wp',
-    cost: 225, hp: 50,
+    cost: 281, hp: 50,
     kind: 'shooter',
     range: 6.5, fireMs: 700, damage: 14, splash: 0,
     target: 'globalClosestToHive',
@@ -89,7 +89,7 @@ export const BEES = {
   },
   mortar: {
     id: 'mortar', name: 'Mortar Bee', letter: 'Mr',
-    cost: 325, hp: 90,
+    cost: 406, hp: 90,
     kind: 'shooter',
     range: 9.0, fireMs: 2400, damage: 90, splash: 2.5,
     target: 'globalClosestToHive',
