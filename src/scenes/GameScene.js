@@ -205,6 +205,7 @@ export class GameScene extends Phaser.Scene {
   }
 
   _spawnBear(type, fixedLane) {
+    type = this._mapEnemyType(type);
     const spec = BEARS[type];
     const lane = (typeof fixedLane === 'number')
       ? fixedLane
@@ -223,6 +224,20 @@ export class GameScene extends Phaser.Scene {
       stunnedUntil: 0,
       stunReadyMs: 0       // for honey badger
     });
+  }
+
+  // Wave-based enemy override:
+  //   waves 1-2 → only normal bears (swap pandas to grizzlies; leave
+  //               bosses and evil-bees alone)
+  //   waves 5+  → only pandas       (swap normal bears to pandas; leave
+  //                                  bosses and evil-bees alone)
+  _mapEnemyType(type) {
+    const spec = BEARS[type];
+    if (!spec || spec.isBoss || spec.isBee) return type;
+    const waveIdx = this.registry.get('waveIndex') ?? 0;
+    if (waveIdx <= 1 && type === 'panda') return 'grizzly';
+    if (waveIdx >= 4 && type !== 'panda') return 'panda';
+    return type;
   }
 
   // --- Bears --------------------------------------------------------------
