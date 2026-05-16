@@ -4,7 +4,7 @@
 
 import { BEES } from '../data/bees.js';
 import { WORLD } from '../data/world.js';
-import { spendHoney, setSelectedBee } from '../state.js';
+import { spendHoney, setSelectedBee, workerCost, noteWorkerPlaced } from '../state.js';
 import { drawGhostBee } from '../world/meadowRender.js';
 
 export class PlacementController {
@@ -43,7 +43,8 @@ export class PlacementController {
     const type = this.scene.registry.get('selectedBeeType');
     if (!type) { this.hoverValid = false; return; }
     const honey = this.scene.registry.get('honey') ?? 0;
-    this.hoverValid = this._isPlaceable(col, row) && honey >= BEES[type].cost;
+    const cost = type === 'worker' ? workerCost(this.scene.registry) : BEES[type].cost;
+    this.hoverValid = this._isPlaceable(col, row) && honey >= cost;
   }
 
   _onDown(p) {
@@ -59,9 +60,10 @@ export class PlacementController {
     }
 
     if (!this._isPlaceable(col, row)) return;
-    const spec = BEES[type];
-    if (!spendHoney(this.scene.registry, spec.cost)) return;
+    const cost = type === 'worker' ? workerCost(this.scene.registry) : BEES[type].cost;
+    if (!spendHoney(this.scene.registry, cost)) return;
     this.scene.placeBee(type, col, row);
+    if (type === 'worker') noteWorkerPlaced(this.scene.registry);
     setSelectedBee(this.scene.registry, null);
   }
 
@@ -90,7 +92,8 @@ export class PlacementController {
 
     // Refresh validity (honey could have changed since pointer move).
     const honey = this.scene.registry.get('honey') ?? 0;
-    const valid = this._isPlaceable(this.hoverCol, this.hoverRow) && honey >= BEES[type].cost;
+    const cost = type === 'worker' ? workerCost(this.scene.registry) : BEES[type].cost;
+    const valid = this._isPlaceable(this.hoverCol, this.hoverRow) && honey >= cost;
     drawGhostBee(g, type, this.hoverCol, this.hoverRow, layout, valid);
   }
 }

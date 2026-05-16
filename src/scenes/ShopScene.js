@@ -173,10 +173,10 @@ export class ShopScene extends Phaser.Scene {
       c.status.setPosition(x, cardY + 96);
     }
 
-    this._hint.setPosition(w / 2, h * 0.78);
-    this._status.setPosition(w / 2, h * 0.82);
-    this._continueBtn.setPosition(w / 2, h * 0.90);
-    this._continueTxt.setPosition(w / 2, h * 0.90);
+    this._hint.setPosition(w / 2, h * 0.72);
+    this._status.setPosition(w / 2, h * 0.76);
+    this._continueBtn.setPosition(w / 2, h * 0.84);
+    this._continueTxt.setPosition(w / 2, h * 0.84);
   }
 
   _continue() {

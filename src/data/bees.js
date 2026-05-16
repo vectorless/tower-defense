@@ -6,7 +6,7 @@
 export const BEES = {
   worker: {
     id: 'worker', name: 'Worker', letter: 'W',
-    cost: 50, hp: 60,
+    cost: 100, hp: 60,
     kind: 'shooter',
     range: 3.5, fireMs: 600, damage: 8, splash: 0,
     target: 'globalClosestToHive',

@@ -40,6 +40,7 @@ export class GameScene extends Phaser.Scene {
     this.bearsByLane = Array.from({ length: this.activeWorld.rows }, () => []);
     this.spawnIndex = 0;
     this.waveStartedAtMs = 0;
+    this.mapStartMs = this.time.now;
 
     this.layout = computeLayout(this, this.activeWorld);
 
@@ -225,6 +226,8 @@ export class GameScene extends Phaser.Scene {
     const now = this.time.now;
     const { originX, cellSize } = this.layout;
     const hiveEdgeX = originX + (WORLD.hiveCol + 1) * cellSize;
+    const elapsedMs = now - (this.mapStartMs ?? now);
+    const speedMult = Math.min(3, 1 + elapsedMs / 180000);
 
     // Rebuild bearsByLane index.
     for (let i = 0; i < this.bearsByLane.length; i++) this.bearsByLane[i].length = 0;
@@ -256,7 +259,7 @@ export class GameScene extends Phaser.Scene {
         }
       } else {
         // Walk left.
-        bear.x -= spec.speed * delta / 1000;
+        bear.x -= spec.speed * speedMult * delta / 1000;
         bear.meleeCdMs = 0;
         // Reached the hive — damage and despawn.
         if (bear.x <= hiveEdgeX) {

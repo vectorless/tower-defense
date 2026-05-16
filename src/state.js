@@ -28,6 +28,7 @@ export function initState(registry) {
   registry.set('gameOver', false);
   registry.set('victory', false);               // becomes true when current map cleared
   registry.set('campaignWon', false);           // true after sandpit cleared
+  registry.set('workersPlacedThisMap', 0);
 }
 
 // Full reset to the start of the campaign. Called from Menu→Start.
@@ -46,6 +47,17 @@ export function resetForMap(registry) {
   registry.set('selectedBeeType', null);
   registry.set('gameOver', false);
   registry.set('victory', false);
+  registry.set('workersPlacedThisMap', 0);
+}
+
+// Worker has a one-time discount per map: first costs 50, rest cost 100.
+export function workerCost(registry) {
+  const placed = registry.get('workersPlacedThisMap') ?? 0;
+  return placed === 0 ? 50 : 100;
+}
+
+export function noteWorkerPlaced(registry) {
+  registry.set('workersPlacedThisMap', (registry.get('workersPlacedThisMap') ?? 0) + 1);
 }
 
 // Set the current map and reset unlockedBees to that map's starting set.

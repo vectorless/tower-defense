@@ -3,7 +3,7 @@ import { WORLD } from '../data/world.js';
 import { BEES, BEE_ORDER } from '../data/bees.js';
 import { MAPS, MAP_ORDER } from '../data/maps.js';
 import { WAVES_BY_MAP } from '../data/waves.js';
-import { setSelectedBee } from '../state.js';
+import { setSelectedBee, workerCost } from '../state.js';
 
 export class HUDScene extends Phaser.Scene {
   constructor() { super('HUDScene'); }
@@ -198,13 +198,15 @@ export class HUDScene extends Phaser.Scene {
 
     for (const p of this.palette) {
       const spec = BEES[p.type];
-      const afford = honey >= spec.cost;
+      const cost = p.type === 'worker' ? workerCost(this.registry) : spec.cost;
+      const afford = honey >= cost;
       const isSel = selected === p.type;
       p.bg.setStrokeStyle(isSel ? 4 : 2, isSel ? 0xffffff : (afford ? 0xffd24a : 0x555555));
       p.bg.setFillStyle(isSel ? 0x5a3a20 : 0x3a2a14, afford ? 1 : 0.55);
       p.icon.setAlpha(afford ? 1 : 0.5);
       p.name.setAlpha(afford ? 1 : 0.5);
       p.cost.setAlpha(afford ? 1 : 0.5);
+      p.cost.setText(`${cost}🍯`);
     }
   }
 }
