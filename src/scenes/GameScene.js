@@ -227,7 +227,7 @@ export class GameScene extends Phaser.Scene {
     const { originX, cellSize } = this.layout;
     const hiveEdgeX = originX + (WORLD.hiveCol + 1) * cellSize;
     const elapsedMs = now - (this.mapStartMs ?? now);
-    const speedMult = Math.min(3, 1 + elapsedMs / 180000);
+    const speedMult = Math.min(3, 1 + elapsedMs / 90000);
 
     // Rebuild bearsByLane index.
     for (let i = 0; i < this.bearsByLane.length; i++) this.bearsByLane[i].length = 0;
