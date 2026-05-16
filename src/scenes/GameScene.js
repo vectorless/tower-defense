@@ -254,7 +254,9 @@ export class GameScene extends Phaser.Scene {
         // Chew bee on meleeMs cadence.
         bear.meleeCdMs -= delta;
         if (bear.meleeCdMs <= 0) {
-          blocker.hp -= spec.meleeDmg;
+          const waveIdx = this.registry.get('waveIndex') ?? 0;
+          const dmg = waveIdx >= 5 ? 9999 : spec.meleeDmg;
+          blocker.hp -= dmg;
           bear.meleeCdMs = spec.meleeMs;
           // Honey badger swipe — stuns the blocker.
           if (spec.stunMs && now >= bear.stunReadyMs) {
