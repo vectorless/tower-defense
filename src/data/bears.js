@@ -4,23 +4,23 @@ export const BEARS = {
   cub: {
     id: 'cub', name: 'Cub',
     hp: 30, speed: 42, meleeMs: 700, meleeDmg: 6, bounty: 5,
-    color: 0x8a5a2a, headColor: 0x9a6a3a, r: 14
+    color: 0x8a5a2a, headColor: 0x9a6a3a, r: 28
   },
   brown: {
     id: 'brown', name: 'Brown',
     hp: 80, speed: 28, meleeMs: 900, meleeDmg: 10, bounty: 10,
-    color: 0x6b3a1f, headColor: 0x7b4a2a, r: 18
+    color: 0x6b3a1f, headColor: 0x7b4a2a, r: 28
   },
   grizzly: {
     id: 'grizzly', name: 'Grizzly',
     hp: 220, speed: 18, meleeMs: 1100, meleeDmg: 18, bounty: 15,
-    color: 0x4a2a14, headColor: 0x5a3a20, r: 22
+    color: 0x4a2a14, headColor: 0x5a3a20, r: 28
   },
   honeybadger: {
     id: 'honeybadger', name: 'Honey Badger',
     hp: 90, speed: 55, meleeMs: 800, meleeDmg: 8, bounty: 15,
     stunMs: 1500, stunCooldownMs: 5000,
-    color: 0x202020, headColor: 0xe0e0e0, r: 16
+    color: 0x202020, headColor: 0xe0e0e0, r: 28
   },
   boss: {
     id: 'boss', name: 'Bear Boss', isBoss: true,
