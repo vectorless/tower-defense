@@ -213,8 +213,11 @@ export class GameScene extends Phaser.Scene {
     const { originX, cellSize } = this.layout;
     const spawnX = originX + WORLD.cols * cellSize + spec.r + 4;
     const elapsedMs = this.time.now - (this.mapStartMs ?? this.time.now);
-    const scale = Math.min(3, 1 + elapsedMs / 90000);
-    const hp = Math.round(spec.hp * scale);
+    const easy = this._isEasyMap();
+    const scale = easy
+      ? Math.min(1.5, 1 + elapsedMs / 180000) * 0.5
+      : Math.min(3, 1 + elapsedMs / 90000);
+    const hp = Math.max(1, Math.round(spec.hp * scale));
     this.bears.push({
       type, lane,
       x: spawnX,
@@ -234,10 +237,17 @@ export class GameScene extends Phaser.Scene {
   _mapEnemyType(type) {
     const spec = BEARS[type];
     if (!spec || spec.isBoss || spec.isBee) return type;
+    if (this._isEasyMap()) return type;
     const waveIdx = this.registry.get('waveIndex') ?? 0;
     if (waveIdx <= 1 && type === 'panda') return 'grizzly';
     if (waveIdx >= 4 && type !== 'panda') return 'panda';
     return type;
+  }
+
+  _isEasyMap() {
+    const id = this.registry.get('currentMapId');
+    return id === 'garden' || id === 'playground' || id === 'sandpit'
+        || id === 'cave'   || id === 'ice';
   }
 
   // --- Bears --------------------------------------------------------------
@@ -247,7 +257,11 @@ export class GameScene extends Phaser.Scene {
     const { originX, cellSize } = this.layout;
     const hiveEdgeX = originX + (WORLD.hiveCol + 1) * cellSize;
     const elapsedMs = now - (this.mapStartMs ?? now);
-    const speedMult = Math.min(3, 1 + elapsedMs / 90000);
+    const easy = this._isEasyMap();
+    const speedMult = easy
+      ? Math.min(1.5, 1 + elapsedMs / 180000) * 0.7
+      : Math.min(3, 1 + elapsedMs / 90000);
+    const meleeMult = easy ? 0.5 : 1;
 
     // Rebuild bearsByLane index.
     for (let i = 0; i < this.bearsByLane.length; i++) this.bearsByLane[i].length = 0;
@@ -270,7 +284,7 @@ export class GameScene extends Phaser.Scene {
         bear.meleeCdMs -= delta;
         if (bear.meleeCdMs <= 0) {
           const waveIdx = this.registry.get('waveIndex') ?? 0;
-          const dmg = waveIdx >= 5 ? 9999 : spec.meleeDmg;
+          const dmg = (waveIdx >= 5 && !easy) ? 9999 : spec.meleeDmg * meleeMult;
           blocker.hp -= dmg;
           bear.meleeCdMs = spec.meleeMs;
           // Honey badger swipe — stuns the blocker.
