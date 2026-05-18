@@ -1,5 +1,18 @@
 import Phaser from 'phaser';
 import { setCurrentMap, resetForMap } from '../state.js';
+import { MAPS, MAP_ORDER } from '../data/maps.js';
+
+const BOSS_MAPS = ['hive', 'volcano', 'storm', 'cosmos'];
+
+function nextBossMap(currentId) {
+  const curIdx = MAP_ORDER.indexOf(currentId);
+  const onBoss = BOSS_MAPS.includes(currentId);
+  for (const bossId of BOSS_MAPS) {
+    const bIdx = MAP_ORDER.indexOf(bossId);
+    if (onBoss ? bIdx > curIdx : bIdx >= curIdx) return bossId;
+  }
+  return BOSS_MAPS[0];
+}
 
 // Code → effect. Each `apply(registry, scene)` returns a result object
 // `{ message, restart? }`. If restart=true, the scene stops the active
@@ -35,6 +48,19 @@ const CODES = {
       setCurrentMap(registry, 'forest');
       resetForMap(registry);
       return { message: '✓ Code redeemed — welcome to The Forest', restart: true };
+    }
+  },
+  'b02s': {
+    label: 'Jump to the next boss map',
+    apply(registry) {
+      const current = registry.get('currentMapId') ?? MAP_ORDER[0];
+      const dest = nextBossMap(current);
+      setCurrentMap(registry, dest);
+      resetForMap(registry);
+      return {
+        message: `✓ Code redeemed — welcome to ${MAPS[dest]?.name ?? dest}`,
+        restart: true
+      };
     }
   }
 };
